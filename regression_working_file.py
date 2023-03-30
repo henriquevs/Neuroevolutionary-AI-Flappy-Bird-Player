@@ -16,16 +16,16 @@ print(data.head())
 
 predict = "G3"
 
-X = np.array(data.drop(labels=[predict], axis=1))  # features or attributes
-y = np.array(data[predict])  # outputs
+X = np.array(data.drop(labels=[predict], axis=1))  # Features or attributes
+y = np.array(data[predict])  # Outputs
 
-# ------------------- MODEL TRAINING --------------------- #
-desired_acc = 0.9  # defines the desired accuracy
-acc = 0  # initial acuracy
-while acc < desired_acc:
-    x_train, x_test, y_train, y_test = sklearn.model_selection.train_test_split(X, y, test_size=0.1)
+x_train, x_test, y_train, y_test = sklearn.model_selection.train_test_split(X, y, test_size=0.1)
 # print(f"\nx_train={x_train}\n\ny_train={y_train}\n\nx_test={x_test}\n\ny_test={y_test}\n")
 
+# ------------------- MODEL TRAINING --------------------- #
+desired_acc = 0.9  # Defines the desired accuracy
+acc = 0  # Initial accuracy
+while acc < desired_acc:
     linear = linear_model.LinearRegression()  # our model
 
     linear.fit(x_train, y_train)  # train the model
@@ -49,5 +49,3 @@ print(f"\npredictions={predictions}\n")
 
 for x in range(len(predictions)):
     print(predictions[x], x_test[x], y_test[x])
-
-
