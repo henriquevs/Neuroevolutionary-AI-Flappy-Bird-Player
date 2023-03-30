@@ -1,7 +1,7 @@
 name: Run Pytest on push
 
 on:
-  [push]:
+  push:
     branches: [main] # replace with the branch you want to run the tests on
 
 jobs:
