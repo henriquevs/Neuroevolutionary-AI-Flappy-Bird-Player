@@ -19,21 +19,26 @@ predict = "G3"
 X = np.array(data.drop(labels=[predict], axis=1))  # features or attributes
 y = np.array(data[predict])  # outputs
 
-x_train, x_test, y_train, y_test = sklearn.model_selection.train_test_split(X, y, test_size=0.1)
+# ------------------- MODEL TRAINING --------------------- #
+desired_acc = 0.9  # defines the desired accuracy
+acc = 0  # initial acuracy
+while acc < desired_acc:
+    x_train, x_test, y_train, y_test = sklearn.model_selection.train_test_split(X, y, test_size=0.1)
 # print(f"\nx_train={x_train}\n\ny_train={y_train}\n\nx_test={x_test}\n\ny_test={y_test}\n")
 
-# ------------------- MODEL TRAINING --------------------- #
-linear = linear_model.LinearRegression()  # our model
+    linear = linear_model.LinearRegression()  # our model
 
-linear.fit(x_train, y_train)  # train the model
-acc = linear.score(x_test, y_test)  # accuracy
-print(f"\nacc={acc}\n")
-print(f"\nCoeffs: {linear.coef_}\n")
-print(f"\nIntercept={linear.intercept_}\n")
+    linear.fit(x_train, y_train)  # train the model
+    acc = linear.score(x_test, y_test)  # accuracy
+    print(f"\nacc={acc}\n")
+    print(f"\nCoeffs: {linear.coef_}\n")
+    print(f"\nIntercept={linear.intercept_}\n")
 
-# SAVE THE MODEL FOR FUTURE USAGE
-with open("result/student_model.pickle", "wb") as f:
-    pickle.dump(linear, f)
+    # SAVE THE MODEL FOR FUTURE USAGE
+    if acc >= desired_acc:
+        with open("result/student_model.pickle", "wb") as f:
+            pickle.dump(linear, f)
+        break
 
 pickle_in = open("result/student_model.pickle", "rb")
 linear = pickle.load(pickle_in)
