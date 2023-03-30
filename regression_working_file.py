@@ -23,20 +23,20 @@ x_train, x_test, y_train, y_test = sklearn.model_selection.train_test_split(X, y
 # print(f"\nx_train={x_train}\n\ny_train={y_train}\n\nx_test={x_test}\n\ny_test={y_test}\n")
 
 # ------------------- MODEL TRAINING --------------------- #
-# linear = linear_model.LinearRegression()  # our model
-#
-# linear.fit(x_train, y_train)  # train the model
-# acc = linear.score(x_test, y_test)  # accuracy
-# print(f"\nacc={acc}\n")
-# print(f"\nCoeffs: {linear.coef_}\n")
-# print(f"\nIntercept={linear.intercept_}\n")
-#
-# # SAVE THE MODEL FOR FUTURE USAGE
-# with open("result/student_model.pickle", "wb") as f:
-#     pickle.dump(linear, f)
+linear = linear_model.LinearRegression()  # our model
 
-picke_in = open("result/student_model.pickle", "rb")
-linear = pickle.load(picke_in)
+linear.fit(x_train, y_train)  # train the model
+acc = linear.score(x_test, y_test)  # accuracy
+print(f"\nacc={acc}\n")
+print(f"\nCoeffs: {linear.coef_}\n")
+print(f"\nIntercept={linear.intercept_}\n")
+
+# SAVE THE MODEL FOR FUTURE USAGE
+with open("result/student_model.pickle", "wb") as f:
+    pickle.dump(linear, f)
+
+pickle_in = open("result/student_model.pickle", "rb")
+linear = pickle.load(pickle_in)
 
 # Make some predictions
 predictions = linear.predict(x_test)
