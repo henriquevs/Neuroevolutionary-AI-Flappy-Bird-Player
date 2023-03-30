@@ -25,6 +25,8 @@ x_train, x_test, y_train, y_test = sklearn.model_selection.train_test_split(X, y
 # ------------------- MODEL TRAINING --------------------- #
 desired_acc = 0.9  # Defines the desired accuracy
 acc = 0  # Initial accuracy
+
+# ------ UNCOMMENT THIS BLOCK TO RE-TRAIN THE MODEL ------- #
 # while acc < desired_acc:
 #     linear = linear_model.LinearRegression()  # our model
 #
