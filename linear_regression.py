@@ -23,24 +23,24 @@ x_train, x_test, y_train, y_test = sklearn.model_selection.train_test_split(X, y
 # print(f"\nx_train={x_train}\n\ny_train={y_train}\n\nx_test={x_test}\n\ny_test={y_test}\n")
 
 # ------------------- MODEL TRAINING --------------------- #
-desired_acc = 0.9  # Defines the desired accuracy
+desired_acc = 0.8  # Defines the desired accuracy
 acc = 0  # Initial accuracy
 
 # ------ UNCOMMENT THIS BLOCK TO RE-TRAIN THE MODEL ------- #
-# while acc < desired_acc:
-#     linear = linear_model.LinearRegression()  # our model
-#
-#     linear.fit(x_train, y_train)  # train the model
-#     acc = linear.score(x_test, y_test)  # accuracy
-#     print(f"\nacc={acc}\n")
-#     print(f"\nCoeffs: {linear.coef_}\n")
-#     print(f"\nIntercept={linear.intercept_}\n")
-#
-#     # SAVE THE MODEL FOR FUTURE USAGE
-#     if acc >= desired_acc:
-#         with open("result/student_model.pickle", "wb") as f:
-#             pickle.dump(linear, f)
-#         break
+while acc < desired_acc:
+    linear = linear_model.LinearRegression()  # our model
+
+    linear.fit(x_train, y_train)  # train the model
+    acc = linear.score(x_test, y_test)  # accuracy
+    print(f"\nacc={acc}\n")
+    print(f"\nCoeffs: {linear.coef_}\n")
+    print(f"\nIntercept={linear.intercept_}\n")
+
+    # SAVE THE MODEL FOR FUTURE USAGE
+    if acc >= desired_acc:
+        with open("result/student_model.pickle", "wb") as f:
+            pickle.dump(linear, f)
+        break
 
 pickle_in = open("result/student_model.pickle", "rb")
 linear = pickle.load(pickle_in)
@@ -59,3 +59,4 @@ pyplot.scatter(data[p], data["G3"])
 pyplot.xlabel(p)
 pyplot.ylabel("Final Grade")
 pyplot.show()
+# pyplot.close()
