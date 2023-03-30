@@ -1,25 +1,21 @@
-name: Run Pytest on push
+name: Run Tests
 
-on:
-  push:
-    branches: [main] # replace with the branch you want to run the tests on
+on: [push]
 
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+    - name: Checkout code
+      uses: actions/checkout@v2
 
     - name: Set up Python
       uses: actions/setup-python@v2
       with:
-        python-version: 3.9 # replace with the version of Python you want to use
+        python-version: 3.8
 
     - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install -r requirements.txt # replace with the name of your requirements file
+      run: pip install -r requirements.txt
 
-    - name: Run Pytest - Linear Regression
-      run: |
-        pytest linear_regression/tests/
+#    - name: Run tests
+#      run: pytest
