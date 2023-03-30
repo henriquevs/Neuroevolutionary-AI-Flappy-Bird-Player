@@ -13,8 +13,7 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v2
       with:
-        python-version: 3.10 # replace with the version of Python you want to use
-        architecture: 'x64'
+        python-version: 3.9 # replace with the version of Python you want to use
 
     - name: Install dependencies
       run: |
