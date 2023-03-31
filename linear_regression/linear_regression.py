@@ -23,7 +23,7 @@ x_train, x_test, y_train, y_test = sklearn.model_selection.train_test_split(X, y
 # print(f"\nx_train={x_train}\n\ny_train={y_train}\n\nx_test={x_test}\n\ny_test={y_test}\n")
 
 # ------------------- MODEL TRAINING --------------------- #
-desired_acc = 0.9  # Defines the desired accuracy
+desired_acc = 0.85  # Defines the desired accuracy
 acc = 0  # Initial accuracy
 
 # ------ UNCOMMENT THIS BLOCK TO RE-TRAIN THE MODEL ------- #
