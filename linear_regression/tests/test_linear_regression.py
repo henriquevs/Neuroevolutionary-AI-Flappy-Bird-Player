@@ -5,13 +5,15 @@ from sklearn import linear_model
 from sklearn.model_selection import train_test_split
 import pickle
 import matplotlib.pyplot as pyplot
+import os
 from matplotlib import style
 
 
 @pytest.fixture
 def data():
     # Load the dataset
-    data = pd.read_csv("../student/student-mat.csv", sep=";")
+    data_file_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'student', 'student-mat.csv'))
+    data = pd.read_csv(data_file_path, sep=";")
     # Extract relevant columns
     data = data[["G1", "G2", "G3", "studytime", "failures", "absences"]]
     return data
@@ -42,13 +44,14 @@ def test_trained_model_accuracy(trained_model, data):
     assert acc >= 0.5
 
 
-# def test_pickle(trained_model):
-#     # Ensure that the trained model can be serialized and deserialized using pickle
-#     with open("../result/student_model.pickle", "wb") as f:
-#         pickle.dump(trained_model, f)
-#     with open("../result/student_model.pickle", "rb") as f:
-#         loaded_model = pickle.load(f)
-#     assert type(loaded_model) == type(trained_model)
+def test_pickle(trained_model):
+    # Ensure that the trained model can be serialized and deserialized using pickle
+    data_file_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'result', 'student_model.pickle'))
+    with open(data_file_path, "wb") as f:
+        pickle.dump(trained_model, f)
+    with open(data_file_path, "rb") as f:
+        loaded_model = pickle.load(f)
+    assert type(loaded_model) == type(trained_model)
 
 
 def test_plot(data):
