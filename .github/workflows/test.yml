@@ -19,3 +19,6 @@ jobs:
 
     - name: Run tests - LINEAR REGRESSION
       run: pytest 1_linear_regression/tests -vv
+
+    - name: Run tests - K-NEAREST-NEIGHBORS
+      run: pytest 1_linear_regression/tests -vv
