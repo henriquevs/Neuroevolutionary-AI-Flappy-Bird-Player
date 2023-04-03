@@ -21,4 +21,4 @@ jobs:
       run: pytest 1_linear_regression/tests -vv
 
     - name: Run tests - K-NEAREST-NEIGHBORS
-      run: pytest 1_linear_regression/tests -vv
+      run: pytest 2_knn_classification/tests/ -vv
