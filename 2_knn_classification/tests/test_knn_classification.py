@@ -9,7 +9,7 @@ from sklearn import linear_model, preprocessing
 @pytest.fixture(scope='module')
 def prepare_data():
     # Load the data
-    data = pd.read_csv("./../data/car.data")
+    data = pd.read_csv("./data/car.data")
     # Shuffle the data
     data = shuffle(data)
     # Encode the categorical data to numerical data
