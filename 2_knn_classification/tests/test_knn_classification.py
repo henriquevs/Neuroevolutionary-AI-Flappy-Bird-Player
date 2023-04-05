@@ -1,4 +1,5 @@
 import pytest
+import os
 import pandas as pd
 from sklearn.utils import shuffle
 import sklearn
@@ -9,7 +10,8 @@ from sklearn import linear_model, preprocessing
 @pytest.fixture(scope='module')
 def prepare_data():
     # Load the data
-    data = pd.read_csv("./data/car.data")
+    data_file_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'data', 'car.data'))
+    data = pd.read_csv(data_file_path)
     # Shuffle the data
     data = shuffle(data)
     # Encode the categorical data to numerical data
