@@ -22,3 +22,6 @@ jobs:
 
     - name: Run tests - K-NEAREST-NEIGHBORS
       run: pytest 2_knn_classification/tests/ -vv
+
+    - name: Run tests - SUPPORT VECTOR MACHINES (svm)
+      run: pytest 3_svm/tests/test_svm.py -vv
