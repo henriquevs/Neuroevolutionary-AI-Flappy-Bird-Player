@@ -25,3 +25,6 @@ jobs:
 
     - name: Run tests - SUPPORT VECTOR MACHINES (svm)
       run: pytest 3_svm/tests/test_svm.py -vv
+
+    - name: Run tests - K_MEANS
+      run: pytest 4_k_means/tests/test_k_means.py -vv
